@@ -9,23 +9,9 @@ class MainPage(BasePage):
     def click_on_order_feed_link(self):
         self.click_on_element(MainPageLocators.ORDER_FEED_LINK)
 
-    @allure.step('клик по "Конструктору"')
-    def click_on_builder_link(self):
-        self.click_on_element(MainPageLocators.BUILDER_LINK)
-
     @allure.step('клик на кнопку "Оформить заказ"')
     def click_on_order_button(self):
         self.click_on_element(MainPageLocators.ORDER_BUTTON)
-
-    @allure.step('вывод заголовока страницы "Конструктор"')
-    def get_header_builder(self):
-        self.find_element_with_wait(MainPageLocators.BUILDER_HEADER)
-        return self.get_text_from_element(MainPageLocators.BUILDER_HEADER)
-
-    @allure.step('вывод заголовка страницы "Лента заказов"')
-    def get_header_order_feed(self):
-        self.find_element_with_wait(OrdersFeedLocators.ORDER_FEED_HEADER)
-        return self.get_text_from_element(OrdersFeedLocators.ORDER_FEED_HEADER)
 
     @allure.step('клик на первый ингредиент')
     def click_on_first_ingredient(self):

@@ -2,23 +2,28 @@ import allure
 import test_data
 from pages.orders_feed_page import OrdersFeedPage
 from pages.profile_page import ProfilePage
+from pages.base_page import BasePage
 
 
 class TestOrdersFeedPage:
     @allure.title('если кликнуть на заказ, откроется всплывающее окно с деталями')
     def test_open_details_order_window_success(self, driver):
-        driver.get(test_data.MAIN_PAGE + test_data.ORDER_FEED)
+        # driver.get(test_data.MAIN_PAGE + test_data.ORDER_FEED)
 
         orders_feed_page = OrdersFeedPage(driver)
+        base = BasePage(driver)
+        base.open_page(test_data.MAIN_PAGE + test_data.ORDER_FEED)
         orders_feed_page.click_on_first_order()
 
         assert orders_feed_page.order_window_open() is True
 
     @allure.title('закрытие окна заказа')
     def test_close_details_order_window_success(self, driver):
-        driver.get(test_data.MAIN_PAGE + test_data.ORDER_FEED)
+        # driver.get(test_data.MAIN_PAGE + test_data.ORDER_FEED)
 
         orders_feed_page = OrdersFeedPage(driver)
+        base = BasePage(driver)
+        base.open_page(test_data.MAIN_PAGE + test_data.ORDER_FEED)
         orders_feed_page.click_on_first_order()
         orders_feed_page.close_details_order_window()
 
@@ -26,9 +31,11 @@ class TestOrdersFeedPage:
 
     @allure.title('заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»')
     def test_check_order_user_in_orders_feed_success(self, driver):
-        driver.get(test_data.MAIN_PAGE)
+        # driver.get(test_data.MAIN_PAGE)
 
         profile_page = ProfilePage(driver)
+        base = BasePage(driver)
+        base.open_page(test_data.MAIN_PAGE)
         profile_page.click_on_link_profile()
         profile_page.enter_profile(email=test_data.USER_EMAIL, password=test_data.USER_PASS)
 
@@ -44,9 +51,11 @@ class TestOrdersFeedPage:
 
     @allure.title('при создании нового заказа счётчик Выполнено за всё время увеличивается')
     def test_check_all_order_counter_increased(self, driver):
-        driver.get(test_data.MAIN_PAGE)
+        # driver.get(test_data.MAIN_PAGE)
 
         profile_page = ProfilePage(driver)
+        base = BasePage(driver)
+        base.open_page(test_data.MAIN_PAGE)
         profile_page.click_on_link_profile()
         profile_page.enter_profile(email=test_data.USER_EMAIL, password=test_data.USER_PASS)
 
@@ -66,9 +75,11 @@ class TestOrdersFeedPage:
 
     @allure.title('при создании нового заказа счётчик Выполнено за сегодня увеличивается')
     def test_check_today_order_counter_increased(self, driver):
-        driver.get(test_data.MAIN_PAGE)
+        # driver.get(test_data.MAIN_PAGE)
 
         profile_page = ProfilePage(driver)
+        base = BasePage(driver)
+        base.open_page(test_data.MAIN_PAGE)
         profile_page.click_on_link_profile()
         profile_page.enter_profile(email=test_data.USER_EMAIL, password=test_data.USER_PASS)
 
@@ -88,9 +99,11 @@ class TestOrdersFeedPage:
 
     @allure.title('после оформления заказа его номер появляется в разделе В работе')
     def test_check_new_order_in_work_success(self, driver):
-        driver.get(test_data.MAIN_PAGE)
+        # driver.get(test_data.MAIN_PAGE)
 
         profile_page = ProfilePage(driver)
+        base = BasePage(driver)
+        base.open_page(test_data.MAIN_PAGE)
         profile_page.click_on_link_profile()
         profile_page.enter_profile(email=test_data.USER_EMAIL, password=test_data.USER_PASS)
 

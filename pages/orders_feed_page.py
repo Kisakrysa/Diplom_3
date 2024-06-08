@@ -75,3 +75,13 @@ class OrdersFeedPage(BasePage):
     def wait_order_placed(self):
         self.find_element_with_wait(OrdersFeedLocators.ORDER_WINDOW_OPENED)
         self.wait_disappear_element(OrdersFeedLocators.ORDER_WINDOW_OPENED)
+
+    @allure.step('вывод заголовка страницы "Лента заказов"')
+    def get_header_order_feed(self):
+        self.find_element_with_wait(OrdersFeedLocators.ORDER_FEED_HEADER)
+        return self.get_text_from_element(OrdersFeedLocators.ORDER_FEED_HEADER)
+
+    @allure.step('вывод заголовока страницы "Конструктор"')
+    def get_header_builder(self):
+        self.find_element_with_wait(MainPageLocators.BUILDER_HEADER)
+        return self.get_text_from_element(MainPageLocators.BUILDER_HEADER)

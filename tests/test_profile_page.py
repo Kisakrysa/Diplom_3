@@ -1,14 +1,16 @@
 import allure
 import test_data
 from pages.profile_page import ProfilePage
+from pages.base_page import BasePage
 
 
 class TestProfilePage:
     @allure.title('переход по клику на «Личный кабинет»')
     def test_open_profile_success(self, driver):
-        driver.get(test_data.MAIN_PAGE)
 
         profile_page = ProfilePage(driver)
+        base = BasePage(driver)
+        base.open_page(test_data.MAIN_PAGE)
         profile_page.click_on_link_profile()
         profile_page.enter_profile(email=test_data.USER_EMAIL, password=test_data.USER_PASS)
         profile_page.click_on_link_profile()
@@ -17,9 +19,11 @@ class TestProfilePage:
 
     @allure.title('переход в раздел «История заказов»')
     def test_open_history_order_success(self, driver):
-        driver.get(test_data.MAIN_PAGE)
+        # driver.get(test_data.MAIN_PAGE)
 
         profile_page = ProfilePage(driver)
+        base = BasePage(driver)
+        base.open_page(test_data.MAIN_PAGE)
         profile_page.click_on_link_profile()
         profile_page.enter_profile(email=test_data.USER_EMAIL, password=test_data.USER_PASS)
         profile_page.click_on_link_profile()
@@ -29,9 +33,11 @@ class TestProfilePage:
 
     @allure.title('выход из аккаунта')
     def test_logout_profile_success(self, driver):
-        driver.get(test_data.MAIN_PAGE)
+        # driver.get(test_data.MAIN_PAGE)
 
         profile_page = ProfilePage(driver)
+        base = BasePage(driver)
+        base.open_page(test_data.MAIN_PAGE)
         profile_page.click_on_link_profile()
         profile_page.enter_profile(email=test_data.USER_EMAIL, password=test_data.USER_PASS)
         profile_page.click_on_link_profile()
